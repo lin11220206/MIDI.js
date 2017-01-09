@@ -30,6 +30,7 @@ if (typeof MIDI === 'undefined') MIDI = {};
 		'ogg': 0,
 		'mp3': 1
 	};
+	MIDI.chooseMP3 = 0;
 
 	/** setup **/
 	MIDI.setup = function (args) {
@@ -57,7 +58,21 @@ if (typeof MIDI === 'undefined') MIDI = {};
 				}
 
 				function chooseFormat() {
-
+					if(MIDI.chooseMP3)
+                                        {
+                                                _formatPriority = {
+                                                        'mp3': 0,
+                                                        'ogg': 1
+                                                }
+                                        }
+                                        else
+                                        {
+                                                _formatPriority = {
+                                                        'ogg': 0,
+                                                        'mp3': 1
+                                                }
+                                        }
+	
 					/* empty object */
 					for (var key in MIDI.adaptor) {
 						delete MIDI.adaptor[key];
